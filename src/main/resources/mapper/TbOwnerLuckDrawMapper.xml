@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.TbOwnerLuckDrawMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.TbOwnerLuckDraw">
+    <id column="luckdraw_id" jdbcType="INTEGER" property="luckdrawId" />
+    <result column="luckdraw_name" jdbcType="INTEGER" property="luckdrawName" />
+    <result column="luckdraw_allname" jdbcType="VARCHAR" property="luckdrawAllname" />
+    <result column="luckdraw_telephone" jdbcType="VARCHAR" property="luckdrawTelephone" />
+    <result column="luckdraw_status" jdbcType="INTEGER" property="luckdrawStatus" />
+    <result column="luckdraw_grade" jdbcType="INTEGER" property="luckdrawGrade" />
+    <result column="luckdraw_ifin" jdbcType="INTEGER" property="luckdrawIfin" />
+    <result column="luckdraw_createTime" jdbcType="VARCHAR" property="luckdrawCreatetime" />
+    <result column="luckdraw_motifyTime" jdbcType="VARCHAR" property="luckdrawMotifytime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    luckdraw_id, luckdraw_name, luckdraw_allname, luckdraw_telephone, luckdraw_status, 
+    luckdraw_grade, luckdraw_ifin, luckdraw_createTime, luckdraw_motifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_owner_luckdraw
+    where luckdraw_id = #{luckdrawId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_owner_luckdraw
+    where luckdraw_id = #{luckdrawId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.atguigu.bean.TbOwnerLuckDraw">
+    insert into tb_owner_luckdraw (luckdraw_id, luckdraw_name, luckdraw_allname, 
+      luckdraw_telephone, luckdraw_status, luckdraw_grade, 
+      luckdraw_ifin, luckdraw_createTime, luckdraw_motifyTime
+      )
+    values (#{luckdrawId,jdbcType=INTEGER}, #{luckdrawName,jdbcType=INTEGER}, #{luckdrawAllname,jdbcType=VARCHAR}, 
+      #{luckdrawTelephone,jdbcType=VARCHAR}, #{luckdrawStatus,jdbcType=INTEGER}, #{luckdrawGrade,jdbcType=INTEGER}, 
+      #{luckdrawIfin,jdbcType=INTEGER}, #{luckdrawCreatetime,jdbcType=VARCHAR}, #{luckdrawMotifytime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <!-- insertSelective -->
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="luckdrawId" parameterType="com.atguigu.bean.TbOwnerLuckDraw">
+    insert into tb_owner_luckdraw
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="luckdrawId != null">
+        luckdraw_id,
+      </if>
+      <if test="luckdrawName != null">
+        luckdraw_name,
+      </if>
+      <if test="luckdrawAllname != null">
+        luckdraw_allname,
+      </if>
+      <if test="luckdrawTelephone != null">
+        luckdraw_telephone,
+      </if>
+      <if test="luckdrawStatus != null">
+        luckdraw_status,
+      </if>
+      <if test="luckdrawGrade != null">
+        luckdraw_grade,
+      </if>
+      <if test="luckdrawIfin != null">
+        luckdraw_ifin,
+      </if>
+      <if test="luckdrawCreatetime != null">
+        luckdraw_createTime,
+      </if>
+      <if test="luckdrawMotifytime != null">
+        luckdraw_motifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="luckdrawId != null">
+        #{luckdrawId,jdbcType=INTEGER},
+      </if>
+      <if test="luckdrawName != null">
+        #{luckdrawName,jdbcType=INTEGER},
+      </if>
+      <if test="luckdrawAllname != null">
+        #{luckdrawAllname,jdbcType=VARCHAR},
+      </if>
+      <if test="luckdrawTelephone != null">
+        #{luckdrawTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="luckdrawStatus != null">
+        #{luckdrawStatus,jdbcType=INTEGER},
+      </if>
+      <if test="luckdrawGrade != null">
+        #{luckdrawGrade,jdbcType=INTEGER},
+      </if>
+      <if test="luckdrawIfin != null">
+        #{luckdrawIfin,jdbcType=INTEGER},
+      </if>
+      <if test="luckdrawCreatetime != null">
+        #{luckdrawCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="luckdrawMotifytime != null">
+        #{luckdrawMotifytime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.TbOwnerLuckDraw">
+    update tb_owner_luckdraw
+    <set>
+      <if test="luckdrawName != null">
+        luckdraw_name = #{luckdrawName,jdbcType=INTEGER},
+      </if>
+      <if test="luckdrawAllname != null">
+        luckdraw_allname = #{luckdrawAllname,jdbcType=VARCHAR},
+      </if>
+      <if test="luckdrawTelephone != null">
+        luckdraw_telephone = #{luckdrawTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="luckdrawStatus != null">
+        luckdraw_status = #{luckdrawStatus,jdbcType=INTEGER},
+      </if>
+      <if test="luckdrawGrade != null">
+        luckdraw_grade = #{luckdrawGrade,jdbcType=INTEGER},
+      </if>
+      <if test="luckdrawIfin != null">
+        luckdraw_ifin = #{luckdrawIfin,jdbcType=INTEGER},
+      </if>
+      <if test="luckdrawCreatetime != null">
+        luckdraw_createTime = #{luckdrawCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="luckdrawMotifytime != null">
+        luckdraw_motifyTime = #{luckdrawMotifytime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where luckdraw_id = #{luckdrawId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.TbOwnerLuckDraw">
+    update tb_owner_luckdraw
+    set luckdraw_name = #{luckdrawName,jdbcType=INTEGER},
+      luckdraw_allname = #{luckdrawAllname,jdbcType=VARCHAR},
+      luckdraw_telephone = #{luckdrawTelephone,jdbcType=VARCHAR},
+      luckdraw_status = #{luckdrawStatus,jdbcType=INTEGER},
+      luckdraw_grade = #{luckdrawGrade,jdbcType=INTEGER},
+      luckdraw_ifin = #{luckdrawIfin,jdbcType=INTEGER},
+      luckdraw_createTime = #{luckdrawCreatetime,jdbcType=VARCHAR},
+      luckdraw_motifyTime = #{luckdrawMotifytime,jdbcType=VARCHAR}
+    where luckdraw_id = #{luckdrawId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- selectTbOwnerLuckDrawNowUnLuck -->
+  <select id="selectTbOwnerLuckDrawNowUnLuck" parameterType="com.atguigu.bean.TbOwnerLuckDraw" resultMap="BaseResultMap">
+    select 
+    luckdraw_id, luckdraw_name, luckdraw_allname, luckdraw_telephone, luckdraw_status, 
+    luckdraw_grade, luckdraw_ifin
+    from tb_owner_luckdraw
+    where luckdraw_status = #{luckdrawStatus,jdbcType=INTEGER}
+  </select>
+</mapper>
