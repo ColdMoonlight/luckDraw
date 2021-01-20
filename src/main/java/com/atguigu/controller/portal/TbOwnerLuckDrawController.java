@@ -31,7 +31,7 @@ public class TbOwnerLuckDrawController {
 		TbOwnerLuckDraw TbOwnerLuckDrawReq = new TbOwnerLuckDraw();
 		TbOwnerLuckDrawReq.setLuckdrawStatus(0);
 		
-		//查询长度,去工具类里面,把长度值送进去,生成范围内的随机数,拿回来,取出该条对应的数据.
+		//查询长度,去工具类里面,把长度值送进去,生成范围内的随机数,拿回来,取出该条对应的数据..
 		List<TbOwnerLuckDraw> TbOwnerLuckDrawResList = new ArrayList<TbOwnerLuckDraw>();
 		TbOwnerLuckDrawResList = tbOwnerLuckDrawService.selectTbOwnerLuckDrawNowUnLuck(TbOwnerLuckDrawReq);
 		
