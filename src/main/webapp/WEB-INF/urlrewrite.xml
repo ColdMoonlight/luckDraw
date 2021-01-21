@@ -31,7 +31,7 @@
     </rule>
     <rule>
         <from>^/login.html</from>
-        <to>/BackHome/tologin</to>
+        <to>/MlbackAdmin/tologin</to>
     </rule>
     <rule>
         <from>^/index.html</from>
