@@ -3,7 +3,7 @@
 <mapper namespace="com.atguigu.dao.TbOwnerLuckDrawMapper">
   <resultMap id="BaseResultMap" type="com.atguigu.bean.TbOwnerLuckDraw">
     <id column="luckdraw_id" jdbcType="INTEGER" property="luckdrawId" />
-    <result column="luckdraw_name" jdbcType="INTEGER" property="luckdrawName" />
+    <result column="luckdraw_name" jdbcType="VARCHAR" property="luckdrawName" />
     <result column="luckdraw_allname" jdbcType="VARCHAR" property="luckdrawAllname" />
     <result column="luckdraw_telephone" jdbcType="VARCHAR" property="luckdrawTelephone" />
     <result column="luckdraw_status" jdbcType="INTEGER" property="luckdrawStatus" />
@@ -31,7 +31,7 @@
       luckdraw_telephone, luckdraw_status, luckdraw_grade, 
       luckdraw_ifin, luckdraw_createTime, luckdraw_motifyTime
       )
-    values (#{luckdrawId,jdbcType=INTEGER}, #{luckdrawName,jdbcType=INTEGER}, #{luckdrawAllname,jdbcType=VARCHAR}, 
+    values (#{luckdrawId,jdbcType=INTEGER}, #{luckdrawName,jdbcType=VARCHAR}, #{luckdrawAllname,jdbcType=VARCHAR}, 
       #{luckdrawTelephone,jdbcType=VARCHAR}, #{luckdrawStatus,jdbcType=INTEGER}, #{luckdrawGrade,jdbcType=INTEGER}, 
       #{luckdrawIfin,jdbcType=INTEGER}, #{luckdrawCreatetime,jdbcType=VARCHAR}, #{luckdrawMotifytime,jdbcType=VARCHAR}
       )
@@ -73,7 +73,7 @@
         #{luckdrawId,jdbcType=INTEGER},
       </if>
       <if test="luckdrawName != null">
-        #{luckdrawName,jdbcType=INTEGER},
+        #{luckdrawName,jdbcType=VARCHAR},
       </if>
       <if test="luckdrawAllname != null">
         #{luckdrawAllname,jdbcType=VARCHAR},
@@ -102,7 +102,7 @@
     update tb_owner_luckdraw
     <set>
       <if test="luckdrawName != null">
-        luckdraw_name = #{luckdrawName,jdbcType=INTEGER},
+        luckdraw_name = #{luckdrawName,jdbcType=VARCHAR},
       </if>
       <if test="luckdrawAllname != null">
         luckdraw_allname = #{luckdrawAllname,jdbcType=VARCHAR},
@@ -130,7 +130,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.TbOwnerLuckDraw">
     update tb_owner_luckdraw
-    set luckdraw_name = #{luckdrawName,jdbcType=INTEGER},
+    set luckdraw_name = #{luckdrawName,jdbcType=VARCHAR},
       luckdraw_allname = #{luckdrawAllname,jdbcType=VARCHAR},
       luckdraw_telephone = #{luckdrawTelephone,jdbcType=VARCHAR},
       luckdraw_status = #{luckdrawStatus,jdbcType=INTEGER},

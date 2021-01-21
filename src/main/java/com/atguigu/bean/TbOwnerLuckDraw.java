@@ -3,7 +3,7 @@ package com.atguigu.bean;
 public class TbOwnerLuckDraw {
     private Integer luckdrawId;
 
-    private Integer luckdrawName;
+    private String luckdrawName;
 
     private String luckdrawAllname;
 
@@ -27,15 +27,15 @@ public class TbOwnerLuckDraw {
         this.luckdrawId = luckdrawId;
     }
 
-    public Integer getLuckdrawName() {
-        return luckdrawName;
-    }
+    public String getLuckdrawName() {
+		return luckdrawName;
+	}
 
-    public void setLuckdrawName(Integer luckdrawName) {
-        this.luckdrawName = luckdrawName;
-    }
+	public void setLuckdrawName(String luckdrawName) {
+		this.luckdrawName = luckdrawName == null ? null : luckdrawName.trim();
+	}
 
-    public String getLuckdrawAllname() {
+	public String getLuckdrawAllname() {
         return luckdrawAllname;
     }
 
@@ -95,7 +95,7 @@ public class TbOwnerLuckDraw {
 		super();
 	}
 
-	public TbOwnerLuckDraw(Integer luckdrawId, Integer luckdrawName, String luckdrawAllname, String luckdrawTelephone,
+	public TbOwnerLuckDraw(Integer luckdrawId, String luckdrawName, String luckdrawAllname, String luckdrawTelephone,
 			Integer luckdrawStatus, Integer luckdrawGrade, Integer luckdrawIfin, String luckdrawCreatetime,
 			String luckdrawMotifytime) {
 		super();
@@ -117,5 +117,5 @@ public class TbOwnerLuckDraw {
 				+ ", luckdrawGrade=" + luckdrawGrade + ", luckdrawIfin=" + luckdrawIfin + ", luckdrawCreatetime="
 				+ luckdrawCreatetime + ", luckdrawMotifytime=" + luckdrawMotifytime + "]";
 	}
-    
+
 }
