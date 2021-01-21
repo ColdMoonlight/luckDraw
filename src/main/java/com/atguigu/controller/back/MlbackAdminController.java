@@ -50,6 +50,22 @@ public class MlbackAdminController {
 	}
 	
 	/**
+	 * zsh 200730
+	 * 中控台首页
+	 * */
+	@RequestMapping("/BackHomePage")
+	public String backHome(HttpSession session) throws Exception{
+		
+		MlbackAdmin mlbackAdmin =(MlbackAdmin) session.getAttribute("AdminUser");
+		if(mlbackAdmin==null){
+			//SysUsers对象为空
+			return "back/mlbackAdminLogin";
+		}else{
+			return "back/mlbackHomePage";
+		}
+	}
+	
+	/**
 	 * 2.0
 	 * @author zsh
 	 * @param MlbackAdmin
