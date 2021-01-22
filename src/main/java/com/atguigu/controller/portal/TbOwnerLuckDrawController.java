@@ -48,7 +48,7 @@ public class TbOwnerLuckDrawController {
 		
 		Integer peopleId = tbOwnerLuckDrawOne.getLuckdrawId();
 		
-		//封装参数，更新本条对应人为已中奖状态，不再参与下次抽奖
+		//封装参数,更新本条对应人为已中奖状态,不再参与下次抽奖
 		
 		TbOwnerLuckDraw tbOwnerLuckDrawUpdate = new TbOwnerLuckDraw();
 		tbOwnerLuckDrawUpdate.setLuckdrawId(peopleId);
