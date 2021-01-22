@@ -157,5 +157,11 @@
     from tb_owner_luckdraw order by luckdraw_id
   </select>
   
+  <!-- updateAllToStatuszero -->
+  <update id="updateAllToStatuszero" parameterType="com.atguigu.bean.TbOwnerLuckDraw">
+    update tb_owner_luckdraw
+    set luckdraw_status = 0 where luckdraw_id = >0
+  </update>
+  
   
 </mapper>
