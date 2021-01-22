@@ -24,7 +24,7 @@ public class TbOwnerLuckDrawController {
 	/**1.0	zsh 210120
 	 * getOneLuckPeopleDetails
 	 */
-	@RequestMapping(value="/getOneLuckPeopleDetails",method=RequestMethod.POST)
+	@RequestMapping(value="/getOneLuckPeopleDetails",method=RequestMethod.GET)
 	@ResponseBody
 	public Msg getCartitemIdDetails(HttpServletResponse rep,HttpServletRequest res,HttpSession session){
 		
@@ -35,15 +35,27 @@ public class TbOwnerLuckDrawController {
 		List<TbOwnerLuckDraw> TbOwnerLuckDrawResList = new ArrayList<TbOwnerLuckDraw>();
 		TbOwnerLuckDrawResList = tbOwnerLuckDrawService.selectTbOwnerLuckDrawNowUnLuck(TbOwnerLuckDrawReq);
 		
-		Integer nowpeopleNumber = TbOwnerLuckDrawResList.size();
-		
-		Integer luckNumber = beginGetLuck(nowpeopleNumber);
-		
-		TbOwnerLuckDraw tbOwnerLuckDrawOne = new TbOwnerLuckDraw();
-		tbOwnerLuckDrawOne = TbOwnerLuckDrawResList.get(luckNumber);
-		
-		System.out.println("这是个幸运的人:"+tbOwnerLuckDrawOne.toString());
-		
+			
+			Integer nowpeopleNumber = TbOwnerLuckDrawResList.size();
+			
+			System.out.println("当前有"+nowpeopleNumber+"人可参与抽奖.");
+			
+			Integer luckNumber = beginGetLuck(nowpeopleNumber);
+			
+			TbOwnerLuckDraw tbOwnerLuckDrawOne = new TbOwnerLuckDraw();
+			tbOwnerLuckDrawOne = TbOwnerLuckDrawResList.get(luckNumber);
+			
+			System.out.println("中奖人是:"+tbOwnerLuckDrawOne.getLuckdrawName());
+			
+			Integer peopleId = tbOwnerLuckDrawOne.getLuckdrawId();
+			
+			//封装参数，更新本条对应人为已中奖状态，不再参与下次抽奖
+			
+			TbOwnerLuckDraw tbOwnerLuckDrawUpdate = new TbOwnerLuckDraw();
+			tbOwnerLuckDrawUpdate.setLuckdrawId(peopleId);
+			tbOwnerLuckDrawUpdate.setLuckdrawStatus(1);
+			
+			tbOwnerLuckDrawService.updateByPrimaryKeySelective(tbOwnerLuckDrawUpdate);
 		
 		return Msg.success().add("resMsg", "抽奖成功").add("tbOwnerLuckDrawOne", tbOwnerLuckDrawOne);
 	}
@@ -52,7 +64,7 @@ public class TbOwnerLuckDrawController {
 		
 		Integer num = nowpeopleNumber;
 		
-		double d = (int)(Math.random()*num);//因为不需要0，所以需要加1
+		double d = (int)(Math.random()*num);//因为不需要0,所以需要加1
 		
 		Integer finalnumber = (int) d;
 		
@@ -60,5 +72,4 @@ public class TbOwnerLuckDrawController {
 		return finalnumber;
 	}
 
-	
 }

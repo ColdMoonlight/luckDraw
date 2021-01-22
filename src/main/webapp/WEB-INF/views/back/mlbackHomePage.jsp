@@ -18,14 +18,7 @@
 
 </head>
 <body>
+抽奖转盘页面1.0
 </body>
 
-
-<script>
-	//接口初始hua
-	  $(function() {
-		window.location.href="${APP_PATH}/login.html";
-		//启动index页面，调用接口判断请求来源 
-	}) 
-</script>
 </html>
