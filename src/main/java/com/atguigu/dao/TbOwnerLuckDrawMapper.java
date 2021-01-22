@@ -20,4 +20,6 @@ public interface TbOwnerLuckDrawMapper {
 	List<TbOwnerLuckDraw> selectTbOwnerLuckDrawNowUnLuck(TbOwnerLuckDraw tbOwnerLuckDrawReq);
 
 	List<TbOwnerLuckDraw> selectTbOwnerLuckDrawAll();
+
+	int updateAllToStatuszero();
 }

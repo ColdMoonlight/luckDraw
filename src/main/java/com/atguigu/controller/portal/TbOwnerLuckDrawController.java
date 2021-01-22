@@ -2,6 +2,8 @@ package com.atguigu.controller.portal;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -48,7 +50,7 @@ public class TbOwnerLuckDrawController {
 		
 		Integer peopleId = tbOwnerLuckDrawOne.getLuckdrawId();
 		
-		//封装参数，更新本条对应人为已中奖状态，不再参与下次抽奖
+		//封装参数,更新本条对应人为已中奖状态,不再参与下次抽奖
 		
 		TbOwnerLuckDraw tbOwnerLuckDrawUpdate = new TbOwnerLuckDraw();
 		tbOwnerLuckDrawUpdate.setLuckdrawId(peopleId);
@@ -62,11 +64,9 @@ public class TbOwnerLuckDrawController {
 	private Integer beginGetLuck(Integer nowpeopleNumber) {
 		
 		Integer num = nowpeopleNumber;
-		
-		double d = (int)(Math.random()*num);//因为不需要0,所以需要加1
-		
-		Integer finalnumber = (int) d;
-		
+		Random r = new Random();
+		int i= r.nextInt(num);//生成[0,n)区间的整数
+		Integer finalnumber = i;
 		System.out.println("finalnumber:"+finalnumber);
 		return finalnumber;
 	}
@@ -83,6 +83,15 @@ public class TbOwnerLuckDrawController {
 		TbOwnerLuckDrawResList = tbOwnerLuckDrawService.selectTbOwnerLuckDrawAll();
 		
 		return Msg.success().add("resMsg", "获取人名成功").add("allPeopleList", TbOwnerLuckDrawResList);
+	}
+	
+	@RequestMapping(value="/getAllZero",method=RequestMethod.POST)
+	@ResponseBody
+	public Msg getAllZero(HttpServletResponse rep,HttpServletRequest res,HttpSession session){
+		
+		tbOwnerLuckDrawService.updateAllToStatuszero();
+		
+		return Msg.success().add("resMsg", "重置完成");
 	}
 
 }
