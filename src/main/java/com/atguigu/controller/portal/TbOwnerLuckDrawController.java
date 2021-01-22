@@ -26,7 +26,7 @@ public class TbOwnerLuckDrawController {
 	 */
 	@RequestMapping(value="/getOneLuckPeopleDetails",method=RequestMethod.GET)
 	@ResponseBody
-	public Msg getCartitemIdDetails(HttpServletResponse rep,HttpServletRequest res,HttpSession session){
+	public Msg getOneLuckPeopleDetails(HttpServletResponse rep,HttpServletRequest res,HttpSession session){
 		
 		TbOwnerLuckDraw TbOwnerLuckDrawReq = new TbOwnerLuckDraw();
 		TbOwnerLuckDrawReq.setLuckdrawStatus(0);
@@ -34,28 +34,27 @@ public class TbOwnerLuckDrawController {
 		//查询长度,去工具类里面,把长度值送进去,生成范围内的随机数,拿回来,取出该条对应的数据..
 		List<TbOwnerLuckDraw> TbOwnerLuckDrawResList = new ArrayList<TbOwnerLuckDraw>();
 		TbOwnerLuckDrawResList = tbOwnerLuckDrawService.selectTbOwnerLuckDrawNowUnLuck(TbOwnerLuckDrawReq);
+			
+		Integer nowpeopleNumber = TbOwnerLuckDrawResList.size();
 		
-			
-			Integer nowpeopleNumber = TbOwnerLuckDrawResList.size();
-			
-			System.out.println("当前有"+nowpeopleNumber+"人可参与抽奖.");
-			
-			Integer luckNumber = beginGetLuck(nowpeopleNumber);
-			
-			TbOwnerLuckDraw tbOwnerLuckDrawOne = new TbOwnerLuckDraw();
-			tbOwnerLuckDrawOne = TbOwnerLuckDrawResList.get(luckNumber);
-			
-			System.out.println("中奖人是:"+tbOwnerLuckDrawOne.getLuckdrawName());
-			
-			Integer peopleId = tbOwnerLuckDrawOne.getLuckdrawId();
-			
-			//封装参数，更新本条对应人为已中奖状态，不再参与下次抽奖
-			
-			TbOwnerLuckDraw tbOwnerLuckDrawUpdate = new TbOwnerLuckDraw();
-			tbOwnerLuckDrawUpdate.setLuckdrawId(peopleId);
-			tbOwnerLuckDrawUpdate.setLuckdrawStatus(1);
-			
-			tbOwnerLuckDrawService.updateByPrimaryKeySelective(tbOwnerLuckDrawUpdate);
+		System.out.println("当前有"+nowpeopleNumber+"人可参与抽奖.");
+		
+		Integer luckNumber = beginGetLuck(nowpeopleNumber);
+		
+		TbOwnerLuckDraw tbOwnerLuckDrawOne = new TbOwnerLuckDraw();
+		tbOwnerLuckDrawOne = TbOwnerLuckDrawResList.get(luckNumber);
+		
+		System.out.println("中奖人是:"+tbOwnerLuckDrawOne.getLuckdrawName());
+		
+		Integer peopleId = tbOwnerLuckDrawOne.getLuckdrawId();
+		
+		//封装参数，更新本条对应人为已中奖状态，不再参与下次抽奖
+		
+		TbOwnerLuckDraw tbOwnerLuckDrawUpdate = new TbOwnerLuckDraw();
+		tbOwnerLuckDrawUpdate.setLuckdrawId(peopleId);
+		tbOwnerLuckDrawUpdate.setLuckdrawStatus(1);
+		
+		tbOwnerLuckDrawService.updateByPrimaryKeySelective(tbOwnerLuckDrawUpdate);
 		
 		return Msg.success().add("resMsg", "抽奖成功").add("tbOwnerLuckDrawOne", tbOwnerLuckDrawOne);
 	}
@@ -70,6 +69,20 @@ public class TbOwnerLuckDrawController {
 		
 		System.out.println("finalnumber:"+finalnumber);
 		return finalnumber;
+	}
+	
+	@RequestMapping(value="/getAllPeopleName",method=RequestMethod.GET)
+	@ResponseBody
+	public Msg getAllPeopleName(HttpServletResponse rep,HttpServletRequest res,HttpSession session){
+		
+		TbOwnerLuckDraw TbOwnerLuckDrawReq = new TbOwnerLuckDraw();
+		TbOwnerLuckDrawReq.setLuckdrawStatus(0);
+		
+		//查询长度,去工具类里面,把长度值送进去,生成范围内的随机数,拿回来,取出该条对应的数据..
+		List<TbOwnerLuckDraw> TbOwnerLuckDrawResList = new ArrayList<TbOwnerLuckDraw>();
+		TbOwnerLuckDrawResList = tbOwnerLuckDrawService.selectTbOwnerLuckDrawAll();
+		
+		return Msg.success().add("resMsg", "获取人名成功").add("allPeopleList", TbOwnerLuckDrawResList);
 	}
 
 }

@@ -18,4 +18,6 @@ public interface TbOwnerLuckDrawMapper {
     int updateByPrimaryKey(TbOwnerLuckDraw record);
 
 	List<TbOwnerLuckDraw> selectTbOwnerLuckDrawNowUnLuck(TbOwnerLuckDraw tbOwnerLuckDrawReq);
+
+	List<TbOwnerLuckDraw> selectTbOwnerLuckDrawAll();
 }
