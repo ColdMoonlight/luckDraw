@@ -3,7 +3,6 @@ package com.atguigu.controller.portal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -12,8 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import com.atguigu.bean.TbOwnerDrawResult;
 import com.atguigu.bean.TbOwnerLuckDraw;
 import com.atguigu.common.Msg;
+import com.atguigu.service.TbOwnerDrawResultService;
 import com.atguigu.service.TbOwnerLuckDrawService;
 
 @Controller
@@ -23,12 +24,17 @@ public class TbOwnerLuckDrawController {
 	@Autowired
 	TbOwnerLuckDrawService tbOwnerLuckDrawService;
 	
+	@Autowired
+	TbOwnerDrawResultService tbOwnerDrawResultService;
+	
 	/**1.0	zsh 210120
 	 * getOneLuckPeopleDetails
 	 */
 	@RequestMapping(value="/getOneLuckPeopleDetails",method=RequestMethod.GET)
 	@ResponseBody
-	public Msg getOneLuckPeopleDetails(HttpServletResponse rep,HttpServletRequest res,HttpSession session){
+	public Msg getOneLuckPeopleDetails(HttpServletResponse rep,HttpServletRequest res,HttpSession session,TbOwnerLuckDraw tbOwnerLuckDraw){
+		
+		Integer luckdrawGrade = tbOwnerLuckDraw.getLuckdrawGrade();
 		
 		TbOwnerLuckDraw TbOwnerLuckDrawReq = new TbOwnerLuckDraw();
 		TbOwnerLuckDrawReq.setLuckdrawStatus(0);
@@ -48,6 +54,8 @@ public class TbOwnerLuckDrawController {
 		
 		System.out.println("中奖人是:"+tbOwnerLuckDrawOne.getLuckdrawName());
 		
+		String winPropleName = tbOwnerLuckDrawOne.getLuckdrawName();
+		
 		Integer peopleId = tbOwnerLuckDrawOne.getLuckdrawId();
 		
 		//封装参数,更新本条对应人为已中奖状态,不再参与下次抽奖
@@ -57,6 +65,11 @@ public class TbOwnerLuckDrawController {
 		tbOwnerLuckDrawUpdate.setLuckdrawStatus(1);
 		
 		tbOwnerLuckDrawService.updateByPrimaryKeySelective(tbOwnerLuckDrawUpdate);
+		
+		TbOwnerDrawResult tbOwnerDrawResultReq = new TbOwnerDrawResult();
+		tbOwnerDrawResultReq.setDrawresultGrade(luckdrawGrade);
+		tbOwnerDrawResultReq.setDrawresultName(winPropleName);
+		tbOwnerDrawResultService.insertSelective(tbOwnerDrawResultReq);
 		
 		return Msg.success().add("resMsg", "抽奖成功").add("tbOwnerLuckDrawOne", tbOwnerLuckDrawOne);
 	}
