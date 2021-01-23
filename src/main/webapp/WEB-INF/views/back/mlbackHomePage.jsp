@@ -284,11 +284,12 @@
         }
         
         // 获取获奖人信息
-        function getLotteryPerson() {
+        function getLotteryPerson(rank) {
         	var userName;
 			$.ajax({
 				url: "${APP_PATH }/TbOwnerLuckDraw/getOneLuckPeopleDetails",
-				type: "get",
+				type: "post",
+				data: JSON.stringify({ 'luckdrawGrade': rank }),
 				dataType: "json",
 				contentType: 'application/json',
 				async: false,
@@ -362,12 +363,15 @@
         });
 
         $('.lottery-start').on('click', function() {
-        	luckName = getLotteryPerson();
-        	luckName && $('.lottery-show-info .nickname').text(luckName);
-            $('.lottery-middle').show();
-            $('.lottery-left, .lottery-right').hide();
-            cancelAnimationFrame(stopAnimateId);
-            startAnimate();
+        	var prizeRank = $('.lottery-prize-name').data('num');
+        	if (prizeRank) {
+	        	luckName = getLotteryPerson(prizeRank);
+	        	luckName && $('.lottery-show-info .nickname').text(luckName);
+	            $('.lottery-middle').show();
+	            $('.lottery-left, .lottery-right').hide();
+	            cancelAnimationFrame(stopAnimateId);
+	            startAnimate();        		
+        	}
         });
 
         $('.lottery-stop').on('click', function() {
