@@ -1,0 +1,371 @@
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1543812495239'); /* IE9*/
+  src: url('iconfont.eot?t=1543812495239#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff;charset=utf-8;base64,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') format('woff'),
+  url('iconfont.ttf?t=1543812495239') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1543812495239#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  display: inline-block;
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.btn-left:before { content: "\e608"; }
+.btn-right:before { content: "\e609"; }
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.lottery-panel {
+    position: absolute;
+    width: 90%;
+    left: 50%;
+    margin-left: -45%;
+    height: calc(100% - 200px);
+    bottom: 100px;
+}
+
+.lottery-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    width: 260px;
+    height: 100%;
+    border-radius: 5px;
+    background-color: rgba(30, 3, 64, .5);
+}
+
+.lottery-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+    width: calc(100% - 270px);
+    height: 100%;
+    padding: 60px 0 10px 0;
+    border-radius: 5px;
+    background-color: rgba(30, 3, 64, .5);
+}
+
+.lottery-middle {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 11;
+
+    display: none;
+}
+
+.lottery-img {
+    position: absolute;
+    top: 100px;
+    left: 55px;
+    width: 150px;
+    height: 150px;
+    border-radius: 5px;
+    background: url('../img/award.jpg') no-repeat;
+    background-size: cover;
+}
+
+.lottery-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 16px 0;
+    color: #fff;
+    text-align: center;
+    background: url(../img/line.png) no-repeat 50% 100%;
+}
+
+.lottery-prize-name,
+.lottery-product-name {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.lottery-prize-name {
+    display: block;
+    width: 120px;
+}
+
+.lottery-product-name {
+    position: absolute;
+    top: 280px;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+}
+
+.btn-left,
+.btn-right {
+    width: 28px;
+    height: 28px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.lottery-start {
+    position: absolute;
+    bottom: 30px;
+    left: 15%;
+    width: 70%;
+    height: 62px;
+    background: url(../img/lottery-start.png) no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.lottery-win-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    line-height: 1.5;
+    background: url(../img/line.png) no-repeat 50% 100%;
+    padding: 10px 0;
+    font-size: 24px;
+}
+
+.lottery-win-scroll {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.lottery-win-item {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 150px;
+    padding: 6px;
+    margin: 15px 10px;
+    border-radius: 10px;
+    background-color: rgba(30, 3, 64, .5);
+    overflow: hidden;
+    color: #fff;
+}
+
+.lottery-win-item-prize {
+    padding: 3px 0;
+}
+
+.lottery-show-info {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 13;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 300px;
+    height: 80px;
+    padding: 20px 10px;
+    margin-left: -150px;
+    margin-top: -40px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 10px 0 #fff;
+}
+
+.lottery-show-info.close,
+.lottery-stop.close,
+.lottery-close.close {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.lottery-show-info .nickname {
+    font-size: 18px;
+    color: #fff;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.lottery-middle-control {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    z-index: 12;
+
+    width: 100%;
+    text-align: center;
+}
+
+.lottery-stop {
+    display: inline-block;
+    width: 180px;
+    height: 56px;
+    background: url('../img/lottery-stop.png') no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.lottery-close {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background: url('../img/lottery-close.png') no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.lottery-sphere-item {
+    width: 120px;
+    height: 120px;
+    box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.5);
+    border: 1px solid rgba(127, 255, 255, 0.25);
+    cursor: default;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.lottery-sphere-item:hover {
+    box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.75);
+    border: 1px solid rgba(127, 255, 255, 0.75);
+}
+
+.bg-video {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+
+.bg-video video {
+    object-fit: fill;
+}
+
+.loader-container {
+	position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .9);
+    z-index: 9999999;
+}
+
+.loader-container .loading {
+	width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-100px, -100px);
+}
+
+.loader-container .loading-inner {
+    position: relative;
+    width: 1em;
+    height: 1em;
+    margin: 100px auto;
+    font-size: 12px;
+	color: #fff;
+    border-radius: 50%;
+    text-indent: -9999em;
+    -webkit-animation: loader-animate 1.3s infinite linear;
+    animation: loader-animate 1.3s infinite linear;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+@-webkit-keyframes loader-animate {
+
+    0%,
+    100% {
+        box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+    }
+
+    12.5% {
+        box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    }
+
+    25% {
+        box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    }
+
+    37.5% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+
+    50% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+
+    62.5% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+    }
+
+    75% {
+        box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+    }
+
+    87.5% {
+        box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+    }
+}
+
+@keyframes loader-animate {
+
+    0%,
+    100% {
+        box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+    }
+
+    12.5% {
+        box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    }
+
+    25% {
+        box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    }
+
+    37.5% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+
+    50% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+
+    62.5% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+    }
+
+    75% {
+        box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+    }
+
+    87.5% {
+        box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+    }
+}
