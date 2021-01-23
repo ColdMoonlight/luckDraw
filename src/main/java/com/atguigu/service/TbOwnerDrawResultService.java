@@ -49,8 +49,8 @@ public class TbOwnerDrawResultService {
 		return intReslut;
 	}
 	
-	public List<TbOwnerDrawResult> selectTbOwnerDrawResultAll(TbOwnerDrawResult mlbackAdmin) {
-		List<TbOwnerDrawResult>  TbOwnerDrawResultList = tbOwnerDrawResultMapper.selectTbOwnerDrawResultAll(mlbackAdmin);
+	public List<TbOwnerDrawResult> selectTbOwnerDrawResultAll() {
+		List<TbOwnerDrawResult>  TbOwnerDrawResultList = tbOwnerDrawResultMapper.selectTbOwnerDrawResultAll();
 		return TbOwnerDrawResultList;
 	}
 

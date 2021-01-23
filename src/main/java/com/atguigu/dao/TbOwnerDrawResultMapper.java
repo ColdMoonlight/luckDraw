@@ -20,5 +20,5 @@ public interface TbOwnerDrawResultMapper {
 	
 	int updateAllDrawResultToGradezero();
 
-	List<TbOwnerDrawResult> selectTbOwnerDrawResultAll(TbOwnerDrawResult mlbackAdmin);
+	List<TbOwnerDrawResult> selectTbOwnerDrawResultAll();
 }

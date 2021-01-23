@@ -30,7 +30,7 @@ public class TbOwnerLuckDrawController {
 	/**1.0	zsh 210120
 	 * getOneLuckPeopleDetails
 	 */
-	@RequestMapping(value="/getOneLuckPeopleDetails",method=RequestMethod.GET)
+	@RequestMapping(value="/getOneLuckPeopleDetails",method=RequestMethod.POST)
 	@ResponseBody
 	public Msg getOneLuckPeopleDetails(HttpServletResponse rep,HttpServletRequest res,HttpSession session,TbOwnerLuckDraw tbOwnerLuckDraw){
 		
