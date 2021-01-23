@@ -103,6 +103,6 @@
   <update id="updateAllDrawResultToGradezero" parameterType="com.atguigu.bean.TbOwnerDrawResult">
     update tb_owner_drawresult
     set drawresult_grade = 999 where drawresult_id = >0
-  </update
+  </update>
   
 </mapper>
