@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.dao.TbOwnerDrawResultMapper">
+  <resultMap id="BaseResultMap" type="com.atguigu.bean.TbOwnerDrawResult">
+    <id column="drawresult_id" jdbcType="INTEGER" property="drawresultId" />
+    <result column="drawresult_name" jdbcType="VARCHAR" property="drawresultName" />
+    <result column="drawresult_grade" jdbcType="INTEGER" property="drawresultGrade" />
+    <result column="drawresult_createTime" jdbcType="VARCHAR" property="drawresultCreatetime" />
+    <result column="drawresult_motifyTime" jdbcType="VARCHAR" property="drawresultMotifytime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    drawresult_id, drawresult_name, drawresult_grade, drawresult_createTime, drawresult_motifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_owner_drawresult
+    where drawresult_id = #{drawresultId,jdbcType=INTEGER}
+  </select>
+  
+  <insert id="insert" parameterType="com.atguigu.bean.TbOwnerDrawResult">
+    insert into tb_owner_drawresult (drawresult_id, drawresult_name, drawresult_grade, 
+      drawresult_createTime, drawresult_motifyTime
+      )
+    values (#{drawresultId,jdbcType=INTEGER}, #{drawresultName,jdbcType=VARCHAR}, #{drawresultGrade,jdbcType=INTEGER}, 
+      #{drawresultCreatetime,jdbcType=VARCHAR}, #{drawresultMotifytime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.atguigu.bean.TbOwnerDrawResult">
+    insert into tb_owner_drawresult
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="drawresultId != null">
+        drawresult_id,
+      </if>
+      <if test="drawresultName != null">
+        drawresult_name,
+      </if>
+      <if test="drawresultGrade != null">
+        drawresult_grade,
+      </if>
+      <if test="drawresultCreatetime != null">
+        drawresult_createTime,
+      </if>
+      <if test="drawresultMotifytime != null">
+        drawresult_motifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="drawresultId != null">
+        #{drawresultId,jdbcType=INTEGER},
+      </if>
+      <if test="drawresultName != null">
+        #{drawresultName,jdbcType=VARCHAR},
+      </if>
+      <if test="drawresultGrade != null">
+        #{drawresultGrade,jdbcType=INTEGER},
+      </if>
+      <if test="drawresultCreatetime != null">
+        #{drawresultCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="drawresultMotifytime != null">
+        #{drawresultMotifytime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_owner_drawresult
+    where drawresult_id = #{drawresultId,jdbcType=INTEGER}
+  </delete>
+  <update id="updateByPrimaryKeySelective" parameterType="com.atguigu.bean.TbOwnerDrawResult">
+    update tb_owner_drawresult
+    <set>
+      <if test="drawresultName != null">
+        drawresult_name = #{drawresultName,jdbcType=VARCHAR},
+      </if>
+      <if test="drawresultGrade != null">
+        drawresult_grade = #{drawresultGrade,jdbcType=INTEGER},
+      </if>
+      <if test="drawresultCreatetime != null">
+        drawresult_createTime = #{drawresultCreatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="drawresultMotifytime != null">
+        drawresult_motifyTime = #{drawresultMotifytime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where drawresult_id = #{drawresultId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.atguigu.bean.TbOwnerDrawResult">
+    update tb_owner_drawresult
+    set drawresult_name = #{drawresultName,jdbcType=VARCHAR},
+      drawresult_grade = #{drawresultGrade,jdbcType=INTEGER},
+      drawresult_createTime = #{drawresultCreatetime,jdbcType=VARCHAR},
+      drawresult_motifyTime = #{drawresultMotifytime,jdbcType=VARCHAR}
+    where drawresult_id = #{drawresultId,jdbcType=INTEGER}
+  </update>
+  <!-- selectTbOwnerDrawResultAll -->
+  <select id="selectTbOwnerDrawResultAll" parameterType="com.atguigu.bean.TbOwnerDrawResult" resultMap="BaseResultMap">
+    select *
+    from tb_owner_drawresult order by drawresult_id
+  </select>
+  
+  <!-- updateAllDrawResultToGradezero -->
+  <update id="updateAllDrawResultToGradezero" parameterType="com.atguigu.bean.TbOwnerDrawResult">
+    update tb_owner_drawresult
+    set drawresult_grade = 999 where drawresult_id = >0
+  </update
+  
+</mapper>

@@ -150,7 +150,6 @@
     where luckdraw_status = #{luckdrawStatus,jdbcType=INTEGER}
   </select>
   
-  
   <!-- selectTbOwnerLuckDrawAll -->
   <select id="selectTbOwnerLuckDrawAll" parameterType="com.atguigu.bean.TbOwnerLuckDraw" resultMap="BaseResultMap">
     select *
