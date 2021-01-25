@@ -96,7 +96,7 @@
   <!-- selectTbOwnerDrawResultAll -->
   <select id="selectTbOwnerDrawResultAll" parameterType="com.atguigu.bean.TbOwnerDrawResult" resultMap="BaseResultMap">
     select *
-    from tb_owner_drawresult order by drawresult_id
+    from tb_owner_drawresult where drawresult_grade in(1,2,3) order by drawresult_id
   </select>
   
   <!-- updateAllDrawResultToGradezero -->

@@ -15,7 +15,7 @@ import com.atguigu.common.Msg;
 import com.atguigu.service.TbOwnerDrawResultService;
 
 @Controller
-@RequestMapping("/TbOwnerLuckDraw")
+@RequestMapping("/TbOwnerDrawResult")
 public class TbOwnerDrawResultController {
 	
 	@Autowired
