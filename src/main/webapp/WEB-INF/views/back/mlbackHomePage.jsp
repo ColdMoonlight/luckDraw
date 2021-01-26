@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="${APP_PATH}/static/back/css/animate.min.css" />
 	<link rel="stylesheet" href="${APP_PATH}/static/back/css/lottery.css" />
 </head>
-<body>
+<body class="luck-bg">
 	<div class="lottery-panel">
         <div class="lottery-left">
             <div class="lottery-control" title="按左右键切换奖品">
@@ -22,11 +22,11 @@
 
             <div class="lottery-product-name">暂无奖品</div>
 
-            <div class="lottery-start" title="开始抽奖"></div>					
+            <div class="lottery-btn lottery-start" title="开始抽奖"></div>					
         </div>
         <div class="lottery-middle">
             <div class="lottery-middle-control">
-                <div class="lottery-stop" title="停止抽奖"></div>
+                <div class="lottery-btn lottery-stop" title="停止抽奖"></div>
                 <div class="lottery-close close" title="关闭"></div>
             </div>
         </div>
@@ -51,13 +51,16 @@
             <source src="${APP_PATH}/static/back/mp3.mp3" type="audio/mpeg"> 您的浏览器不支持音乐播放 </source>
         </audio>
     </div>
+    
+    <!-- lottery fireworks -->
+    <div class="lottery-fireworks"></div>
 
     <!-- 视频 -->
-    <div class="bg-video">        
+    <%-- <div class="bg-video">        
         <video preload autoplay loop width="100%" height="100%">
             <source src="${APP_PATH}/static/back/video.mp4" type="video/mp4">
         </video>
-    </div>
+    </div> --%>
 
     <div class="lottery-show-info animated" style="display: none">
         <div class="nickname">smile的微笑</div>
@@ -129,7 +132,12 @@
             var lotteryWinNum = lotteryResultData.length;
             $('.lottery-win-num').text(lotteryWinNum || '0')
             lotteryWinNum && lotteryResultData.forEach(function(item) {
-                addLotteryResultItem(item);
+            	var prizeData = lotteryPrizeData[item.drawresultGrade - 1];
+                addLotteryResultItem({
+                	user: item.drawresultName,
+                	rank: prizeData.key,
+                	name: prizeData.value
+                });
             });
         }
 
@@ -149,6 +157,7 @@
 
             initProductData();
             generateMockData();
+            getAllLuckPerson();
             initLotteryResult()
 
             // init  THREE
@@ -167,7 +176,6 @@
             for (var i = 0,len = personArray.length; i < len; i++) {
                 var object, element = document.createElement("div");
                 element.className = "lottery-sphere-item";
-                element.style.backgroundColor = "rgba(0,127,127," + (Math.random() * 0.5 + 0.25) + ")";
                 element.innerText = personArray[i].name;
                 object = new THREE.CSS3DObject(element);
                 object.position.x = Math.random() * 4000 - 2000;
@@ -200,8 +208,8 @@
 
         function getCameraSize() {
             return {
-                width: window.innerWidth * .9,
-                height: window.innerHeight * .9
+                width: window.innerWidth * .95,
+                height: window.innerHeight * .95
             }
         }
 
@@ -303,7 +311,7 @@
         }
         
         // 获取所有参与人员信息
-         function getAllPersonInfo() {
+        function getAllPersonInfo() {
         	var allPeople = [];
 			$.ajax({
 				url: "${APP_PATH}/TbOwnerLuckDraw/getAllPeopleName",
@@ -318,6 +326,22 @@
 				}
 			});
 			return allPeople;
+        }
+        
+        // 获取所有中奖人员
+        function getAllLuckPerson() {
+			$.ajax({
+				url: "${APP_PATH}/TbOwnerDrawResult/getAllresult",
+				type: "post",
+				dataType: "json",
+				contentType: 'application/json',
+				async: false,
+				success: function (data) {
+					if (data.code == 100) {
+						lotteryResultData = data.extend.allWinPeopleList && data.extend.allWinPeopleList;
+					}
+				}
+			});
         }
 
         var camera, scene, renderer;
