@@ -22,11 +22,11 @@
 
             <div class="lottery-product-name">暂无奖品</div>
 
-            <div class="lottery-start" title="开始抽奖"></div>					
+            <div class="lottery-btn lottery-start" title="开始抽奖"></div>					
         </div>
         <div class="lottery-middle">
             <div class="lottery-middle-control">
-                <div class="lottery-stop" title="停止抽奖"></div>
+                <div class="lottery-btn lottery-stop" title="停止抽奖"></div>
                 <div class="lottery-close close" title="关闭"></div>
             </div>
         </div>
@@ -51,6 +51,9 @@
             <source src="${APP_PATH}/static/back/mp3.mp3" type="audio/mpeg"> 您的浏览器不支持音乐播放 </source>
         </audio>
     </div>
+    
+    <!-- lottery fireworks -->
+    <div class="lottery-fireworks"></div>
 
     <!-- 视频 -->
     <%-- <div class="bg-video">        

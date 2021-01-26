@@ -31,6 +31,19 @@
 	background-size: 100% 100%;
 }
 
+.lottery-fireworks {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: -1;
+	background-image: url('../img/fireworks.gif');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	opacity: .2;
+}
+
 .lottery-panel {
     position: absolute;
     width: 90%;
@@ -210,7 +223,7 @@
 
 .lottery-show-info .nickname {
 	margin-top: 40px;
-    font-size: 36px;
+    font-size: 50px;
     color: #000;
     font-weight: bold;
     white-space: nowrap;
@@ -225,6 +238,15 @@
 
     width: 100%;
     text-align: center;
+}
+
+.lottery-btn {	
+	-webkit-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+}
+.lottery-btn:hover {
+	-webkit-transform: translateY(2px) scale(.98);
+	transform: translateY(2px) scale(.98);
 }
 
 .lottery-stop {
@@ -243,6 +265,10 @@
     background: url('../img/lottery-close.png') no-repeat;
     background-size: cover;
     cursor: pointer;
+}
+
+.lottery-close:hover {
+	background-color: rgba(0, 0, 0, .3);
 }
 
 .lottery-sphere-item {
