@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="${APP_PATH}/static/back/css/animate.min.css" />
 	<link rel="stylesheet" href="${APP_PATH}/static/back/css/lottery.css" />
 </head>
-<body>
+<body class="luck-bg">
 	<div class="lottery-panel">
         <div class="lottery-left">
             <div class="lottery-control" title="按左右键切换奖品">
@@ -53,11 +53,11 @@
     </div>
 
     <!-- 视频 -->
-    <div class="bg-video">        
+    <%-- <div class="bg-video">        
         <video preload autoplay loop width="100%" height="100%">
             <source src="${APP_PATH}/static/back/video.mp4" type="video/mp4">
         </video>
-    </div>
+    </div> --%>
 
     <div class="lottery-show-info animated" style="display: none">
         <div class="nickname">smile的微笑</div>
@@ -167,7 +167,6 @@
             for (var i = 0,len = personArray.length; i < len; i++) {
                 var object, element = document.createElement("div");
                 element.className = "lottery-sphere-item";
-                element.style.backgroundColor = "rgba(0,127,127," + (Math.random() * 0.5 + 0.25) + ")";
                 element.innerText = personArray[i].name;
                 object = new THREE.CSS3DObject(element);
                 object.position.x = Math.random() * 4000 - 2000;
@@ -200,8 +199,8 @@
 
         function getCameraSize() {
             return {
-                width: window.innerWidth * .9,
-                height: window.innerHeight * .9
+                width: window.innerWidth * .95,
+                height: window.innerHeight * .95
             }
         }
 
