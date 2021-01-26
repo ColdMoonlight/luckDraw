@@ -132,7 +132,12 @@
             var lotteryWinNum = lotteryResultData.length;
             $('.lottery-win-num').text(lotteryWinNum || '0')
             lotteryWinNum && lotteryResultData.forEach(function(item) {
-                addLotteryResultItem(item);
+            	var prizeData = lotteryPrizeData[item.drawresultGrade - 1];
+                addLotteryResultItem({
+                	user: item.drawresultName,
+                	rank: prizeData.key,
+                	name: prizeData.value
+                });
             });
         }
 
@@ -152,6 +157,7 @@
 
             initProductData();
             generateMockData();
+            getAllLuckPerson();
             initLotteryResult()
 
             // init  THREE
@@ -305,7 +311,7 @@
         }
         
         // 获取所有参与人员信息
-         function getAllPersonInfo() {
+        function getAllPersonInfo() {
         	var allPeople = [];
 			$.ajax({
 				url: "${APP_PATH}/TbOwnerLuckDraw/getAllPeopleName",
@@ -320,6 +326,22 @@
 				}
 			});
 			return allPeople;
+        }
+        
+        // 获取所有中奖人员
+        function getAllLuckPerson() {
+			$.ajax({
+				url: "${APP_PATH}/TbOwnerDrawResult/getAllresult",
+				type: "post",
+				dataType: "json",
+				contentType: 'application/json',
+				async: false,
+				success: function (data) {
+					if (data.code == 100) {
+						lotteryResultData = data.extend.allWinPeopleList && data.extend.allWinPeopleList;
+					}
+				}
+			});
         }
 
         var camera, scene, renderer;
