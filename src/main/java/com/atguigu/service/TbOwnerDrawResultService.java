@@ -54,4 +54,9 @@ public class TbOwnerDrawResultService {
 		return TbOwnerDrawResultList;
 	}
 
+	public int deleteAll() {
+		int  intReslut = tbOwnerDrawResultMapper.deleteAll();
+		return intReslut;
+	}
+
 }

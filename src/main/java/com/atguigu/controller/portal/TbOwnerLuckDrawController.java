@@ -129,8 +129,10 @@ public class TbOwnerLuckDrawController {
 	@RequestMapping(value="/getAllZero",method=RequestMethod.POST)
 	@ResponseBody
 	public Msg getAllZero(HttpServletResponse rep,HttpServletRequest res,HttpSession session){
-		
+		//改掉这些人为可抽奖状态,
 		tbOwnerLuckDrawService.updateAllToStatuszero();
+		//删掉抽奖结果
+		tbOwnerDrawResultService.deleteAll();
 		
 		return Msg.success().add("resMsg", "重置完成");
 	}
