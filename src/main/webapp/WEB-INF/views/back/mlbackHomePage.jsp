@@ -6,7 +6,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Lottery</title>
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+	<link rel="stylesheet" href="${APP_PATH}/static/back/css/style.css" />
 	<link rel="stylesheet" href="${APP_PATH}/static/back/css/animate.min.css" />
+	<link rel="stylesheet" href="${APP_PATH}/static/common/toastr/toastr.min.css">
 	<link rel="stylesheet" href="${APP_PATH}/static/back/css/lottery.css" />
 </head>
 <body class="luck-bg">
@@ -31,6 +33,7 @@
             </div>
         </div>
         <div class="lottery-right">
+        	<div class="lottery-reset-btn">重置</div>
             <div class="lottery-win-title">中奖名单(<span class="lottery-win-num">0</span>人)</div>
             <div class="lottery-winner">
                 <div class="lottery-win-list lottery-win-scroll"></div>
@@ -66,7 +69,30 @@
         <div class="nickname">smile的微笑</div>
     </div>
     
+    <!-- reset win list modal -->
+    <div class="modal fade" id="resetModal" tabindex="-1" role="dialog" aria-labelledby="resetModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">提示</h4>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>你确定要重置中奖名单吗?</p>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary btn-cancel" type="button" data-dismiss="modal">否</button>
+					<button class="btn btn-danger btn-ok" type="button">是</button>
+				</div>
+			</div>
+		</div>
+	</div>
+    
     <script src="${APP_PATH}/static/common/jquery.min.js"></script>
+    <script src="${APP_PATH}/static/back/lib/bootstrap/bootstrap.min.js"></script>
+    <script src="${APP_PATH}/static/back/lib/toastr/toastr.min.js"></script>
     <script src="${APP_PATH}/static/back/js/three.min.js"></script>
     <script src="${APP_PATH}/static/back/js/tween.min.js"></script>
     <script src="${APP_PATH}/static/back/js/CSS3DRenderer.js"></script>
@@ -147,7 +173,7 @@
                     '<div class="lottery-win-item-prize lottery-win-item-rank">'+ data.rank +'</div>' +
                     '<div class="lottery-win-item-prize lottery-win-item-name">'+ data.name +'</div>' +
                 '</div>';
-            $('.lottery-win-scroll').append($(resultItemHtml))
+            $('.lottery-win-list').append($(resultItemHtml))
         }
 
         function init() {
@@ -343,6 +369,32 @@
 				}
 			});
         }
+        
+        // 重置获奖名单
+        function resetLotteryWinList(callback) {
+        	$('.loader-container').show();
+        	$.ajax({
+				url: "${APP_PATH}/TbOwnerLuckDraw/getAllZero",
+				type: "post",
+				dataType: "json",
+				contentType: 'application/json',
+				success: function (data) {
+					if (data.code == 100) {
+						toastr.success('中奖名单已被清空');
+						
+						callback && callback();
+					} else {
+						toastr.error('网络异常，请重试...');
+					}
+				},
+				error: function() {
+					toastr.error('网络异常，请重试...');
+				},
+				complete: function() {
+		        	$('.loader-container').hide();
+				}
+			});
+        }
 
         var camera, scene, renderer;
         var personArray = [], objects = [], sphere = [];
@@ -419,6 +471,18 @@
             $('.lottery-stop').removeClass('close');
             $('.lottery-left, .lottery-right').show();
             $('.lottery-middle, .lottery-show-info').hide();
+        });
+        
+        $('.lottery-reset-btn').on('click', function() {
+        	$('#resetModal').modal('show');
+        });
+        
+        $('#resetModal .btn-ok').on('click', function() {
+        	resetLotteryWinList(function() {
+        		$('#resetModal').modal('hide');
+        		lotteryResultData = [];
+        		$('.lottery-win-list').html('');
+        	});
         });
     </script>
 </body>
