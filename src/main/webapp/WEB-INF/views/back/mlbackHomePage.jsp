@@ -329,7 +329,7 @@
 				async: false,
 				success: function (data) {
 					if (data.code == 100) {
-						userName = data.extend.tbOwnerLuckDrawOne && data.extend.tbOwnerLuckDrawOne.luckdrawName;
+						userName = data.extend.winPropleName;
 					}
 				}
 			});
@@ -452,12 +452,14 @@
 
         $('.lottery-stop').on('click', function() {
         	var lotteryData = lotteryPrizeData[$('.lottery-prize-name').data('num') - 1];
- 
-        	addLotteryResultItem({
-        		user: luckName,
-        		rank: lotteryData.key,
-        		name: lotteryData.value,
-        	});
+        	var lotteryWinPersonInfo = {
+           		user: luckName,
+           		rank: lotteryData.key,
+           		name: lotteryData.value,
+           	};
+        	addLotteryResultItem(lotteryWinPersonInfo);
+        	lotteryResultData.push(lotteryWinPersonInfo)
+        	$('.lottery-win-num').text(lotteryResultData.length);
         	
             $(this).addClass('close');
             $('.lottery-close').removeClass('close');
@@ -482,6 +484,7 @@
         		$('#resetModal').modal('hide');
         		lotteryResultData = [];
         		$('.lottery-win-list').html('');
+        		$('.lottery-win-num').text('0');
         	});
         });
     </script>
