@@ -27,9 +27,9 @@
 	</head>
 	<body class="c-app">
 		<div class="container">
-			<div class="header">
+			<%-- <div class="header">
 				<img src="${APP_PATH }/static/common/dblogo.png" />
-			</div>
+			</div> --%>
 			<div class="row login-box">
 				<div class="col-md-8 col-lg-8 login-bg md-down-none">
 					<%-- <img src="${APP_PATH }/static/back/img/logon.jpg" /> --%>

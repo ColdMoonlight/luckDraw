@@ -149,6 +149,26 @@
     cursor: pointer;
 }
 
+.lottery-reset-btn {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 3;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 80px;
+	height: 44px;
+	font-size: 18px;
+	color: #fff;
+	cursor: pointer;
+}
+
+.lottery-reset:hover {
+	color: #eee;
+}
+
 .lottery-win-title {
     position: absolute;
     top: 0;
@@ -164,10 +184,14 @@
     font-size: 24px;
 }
 
-.lottery-win-scroll {
+.lottery-winner {
+	height: 100%;
+    overflow-y: auto;
+}
+
+.lottery-win-list {
     display: flex;
     flex-wrap: wrap;
-    overflow-y: auto;
     padding: 10px;
 }
 
