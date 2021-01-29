@@ -21,4 +21,6 @@ public interface TbOwnerDrawResultMapper {
 	int updateAllDrawResultToGradezero();
 
 	List<TbOwnerDrawResult> selectTbOwnerDrawResultAll();
+
+	int deleteAll();
 }

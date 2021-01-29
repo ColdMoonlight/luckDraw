@@ -159,7 +159,8 @@
   <!-- updateAllToStatuszero -->
   <update id="updateAllToStatuszero" parameterType="com.atguigu.bean.TbOwnerLuckDraw">
     update tb_owner_luckdraw
-    set luckdraw_status = 0 where luckdraw_id = >0
+    set luckdraw_status = 0 
+    where luckdraw_id >0
   </update>
   
   

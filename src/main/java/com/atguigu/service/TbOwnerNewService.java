@@ -1,5 +1,7 @@
 package com.atguigu.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.atguigu.bean.TbOwnerNew;
@@ -41,6 +43,17 @@ public class TbOwnerNewService {
 	public int updateByPrimaryKeySelective(TbOwnerNew TbOwnerNew) {
 		int  intReslut = TbOwnerNewMapper.updateByPrimaryKeySelective(TbOwnerNew);
 		return intReslut;
+	}
+	
+	/**
+	 * @author Shinelon
+	 * @param TbOwnerLuckDraw
+	 * @exception 查看用户信息是否存在
+	 * 	3.0
+	 * */
+	public List<TbOwnerNew> selectTbOwnerNewByGrade(TbOwnerNew TbOwnerNew) {
+		List<TbOwnerNew>  TbOwnerNewList = TbOwnerNewMapper.selectTbOwnerNewByGrade(TbOwnerNew);
+		return TbOwnerNewList;
 	}
 
 	public int setAllToOne() {

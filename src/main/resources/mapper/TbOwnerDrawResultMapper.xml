@@ -105,4 +105,9 @@
     set drawresult_grade = 999 where drawresult_id = >0
   </update>
   
+  <delete id="deleteAll" parameterType="java.lang.Integer">
+    delete from tb_owner_drawresult
+    where drawresult_id >0
+  </delete>
+  
 </mapper>
