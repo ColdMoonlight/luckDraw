@@ -14,7 +14,7 @@
 以/开始的相对路径，找资源，以服务器的路径为标准(http://localhost:3306)；需要加上项目名
 		http://localhost:3306/crud
 -->
-<script type="text/javascript" src="${APP_PATH }/static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="${APP_PATH }/static/common/jquery.min.js"></script>
 
 </head>
 <body>

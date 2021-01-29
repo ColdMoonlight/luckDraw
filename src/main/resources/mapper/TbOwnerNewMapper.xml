@@ -90,4 +90,11 @@
       new_motifyTime = #{newMotifytime,jdbcType=VARCHAR}
     where new_id = #{newId,jdbcType=INTEGER}
   </update>
+  
+  <!-- selectTbOwnerNewByGrade -->
+  <select id="selectTbOwnerNewByGrade" parameterType="com.atguigu.bean.TbOwnerNew" resultMap="BaseResultMap">
+    select *
+    from tb_owner_new
+    where new_grade = #{newGrade,jdbcType=INTEGER}
+  </select>
 </mapper>

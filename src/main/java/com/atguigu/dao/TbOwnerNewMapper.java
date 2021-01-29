@@ -1,7 +1,6 @@
 package com.atguigu.dao;
 
 import java.util.List;
-
 import com.atguigu.bean.TbOwnerNew;
 
 public interface TbOwnerNewMapper {
@@ -22,4 +21,6 @@ public interface TbOwnerNewMapper {
 	int setAllToOne();
 
 	int setAllToZero();
+
+	List<TbOwnerNew> selectTbOwnerNewByGrade(TbOwnerNew tbOwnerNew);
 }
