@@ -46,6 +46,7 @@
 		<table tableName="tb_owner_luckDraw" domainObjectName="TbOwnerLuckDraw" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
 		<table tableName="tb_owner_drawresult" domainObjectName="TbOwnerDrawResult" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
 		<table tableName="tb_mlback_admin" domainObjectName="MlbackAdmin" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<table tableName="tb_owner_new" domainObjectName="TbOwnerNew" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
 		-->
 		
 		<!--	tb_paypal
