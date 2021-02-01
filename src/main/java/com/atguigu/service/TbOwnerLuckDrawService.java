@@ -1,7 +1,6 @@
 package com.atguigu.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.atguigu.bean.TbOwnerLuckDraw;
@@ -26,7 +25,6 @@ public class TbOwnerLuckDrawService {
 	
 	/**
 	 * @author
-	 * @param 
 	 * @exception 删除本条信息
 	 * 	3.0
 	 * */
@@ -60,100 +58,4 @@ public class TbOwnerLuckDrawService {
 		return intReslut;
 	}
 	
-//	/**
-//	 * @author Shinelon
-//	 * @param TbOwnerLuckDraw
-//	 * @exception 查看用户信息是否存在
-//	 * 	3.0
-//	 * */
-//	public List<TbOwnerLuckDraw> selectTbOwnerLuckDraw(TbOwnerLuckDraw TbOwnerLuckDraw) {
-//		List<TbOwnerLuckDraw>  TbOwnerLuckDrawList = TbOwnerLuckDrawMapper.selectTbOwnerLuckDraw(TbOwnerLuckDraw);
-//		return TbOwnerLuckDrawList;
-//	}
-//	/**
-//	 * @author Shinelon
-//	 * @param TbOwnerLuckDraw
-//	 * @exception 查看用户信息是否存在
-//	 * 	3.0
-//	 * */
-//	public TbOwnerLuckDraw selectTbOwnerLuckDrawById(TbOwnerLuckDraw TbOwnerLuckDraw) {
-//		TbOwnerLuckDraw  TbOwnerLuckDrawOne = TbOwnerLuckDrawMapper.selectTbOwnerLuckDrawById(TbOwnerLuckDraw);
-//		return TbOwnerLuckDrawOne;
-//	}
-	
-	
-//	/**
-//	 * @author Shinelon
-//	 * @param 
-//	 * @exception 查看全部用户信息
-//	 * 	3.0
-//	 * */
-//	public List<TbOwnerLuckDraw> selectTbOwnerLuckDrawGetAll() {
-//		List<TbOwnerLuckDraw>  TbOwnerLuckDrawList = TbOwnerLuckDrawMapper.selectTbOwnerLuckDrawGetAll();
-//		return TbOwnerLuckDrawList;
-//	}
-//	/**
-//	 * @author Shinelon
-//	 * @param 
-//	 * @exception 查看全部用户信息
-//	 * 
-//	 * */
-//	public List<TbOwnerLuckDraw> selectTbOwnerLuckDrawGetAllByParentId() {
-//		List<TbOwnerLuckDraw>  TbOwnerLuckDrawList = TbOwnerLuckDrawMapper.selectTbOwnerLuckDrawGetAllByParentId();
-//		return TbOwnerLuckDrawList;
-//	}
-//	
-//	/**
-//	 * @author
-//	 * @param 
-//	 * @exception 查看全部用户信息
-//	 * 	3.0
-//	 * */
-//	public List<TbOwnerLuckDraw> selectMenuTbOwnerLuckDrawGetAll() {
-//		List<TbOwnerLuckDraw>  TbOwnerLuckDrawList = TbOwnerLuckDrawMapper.selectMenuTbOwnerLuckDrawGetAll();
-//		return TbOwnerLuckDrawList;
-//	}
-	
-	/**
-	 * @author Shinelon
-	 * @param 
-	 * @exception 通过CatalogBySeo查找该类的详情
-	 * 	3.0
-	 * */
-//	public List<TbOwnerLuckDraw> selectTbOwnerLuckDrawBySeo(TbOwnerLuckDraw TbOwnerLuckDraw) {
-//		List<TbOwnerLuckDraw>  TbOwnerLuckDrawList = TbOwnerLuckDrawMapper.selectTbOwnerLuckDrawBySeo(TbOwnerLuckDraw);
-//		return TbOwnerLuckDrawList;
-//	}
-//	/**
-//	 * @autho	onuse	20191226	检查
-//	 * @param TbOwnerLuckDraw
-//	 * @exception	
-//	 * 	3.0
-//	 * */
-//	public List<TbOwnerLuckDraw> selectCataloglistByParam(TbOwnerLuckDraw TbOwnerLuckDraw) {
-//		List<TbOwnerLuckDraw>  TbOwnerLuckDrawList = TbOwnerLuckDrawMapper.selectCataloglistByParam(TbOwnerLuckDraw);
-//		return TbOwnerLuckDrawList;
-//	}
-//	
-//	/**
-//	 * @autho	3.0
-//	 * @param TbOwnerLuckDraw
-//	 * @exception
-//	 * 	3.0	
-//	 * */
-//	public List<TbOwnerLuckDraw> selectTbOwnerLuckDrawBackSearch(TbOwnerLuckDraw TbOwnerLuckDrawReq) {
-//		List<TbOwnerLuckDraw>  TbOwnerLuckDrawList = TbOwnerLuckDrawMapper.selectTbOwnerLuckDrawBackSearch(TbOwnerLuckDrawReq);
-//		return TbOwnerLuckDrawList;
-//	}
-//	/**
-//	 * @autho	3.0
-//	 * @param TbOwnerLuckDraw
-//	 * @exception
-//	 * 	3.0	
-//	 * */
-//	public List<TbOwnerLuckDraw> selectMenuTbOwnerLuckDrawGetAllOnlyFrontUsed() {
-//		List<TbOwnerLuckDraw>  TbOwnerLuckDrawList = TbOwnerLuckDrawMapper.selectMenuTbOwnerLuckDrawGetAllOnlyFrontUsed();
-//		return TbOwnerLuckDrawList;
-//	}
-
 }

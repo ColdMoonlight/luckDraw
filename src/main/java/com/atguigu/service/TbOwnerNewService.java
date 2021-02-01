@@ -55,16 +55,6 @@ public class TbOwnerNewService {
 		return TbOwnerNewList;
 	}
 
-	public int setAllToOne() {
-		int  intReslut = TbOwnerNewMapper.setAllToOne();
-		return intReslut;
-	}
-
-	public int setAllToZero() {
-		int  intReslut = TbOwnerNewMapper.setAllToZero();
-		return intReslut;
-	}
-
 	public int updateTwoIntoEffect(TbOwnerNew TbOwnerNew) {
 		int  intReslut = TbOwnerNewMapper.updateTwoIntoEffect(TbOwnerNew);
 		return intReslut;
