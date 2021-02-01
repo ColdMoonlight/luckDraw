@@ -109,7 +109,6 @@
     where new_grade = #{newGrade,jdbcType=INTEGER} and new_status = 1
   </select>
   
-  
   <!-- updateTwoIntoEffect -->
   <update id="updateTwoIntoEffect" parameterType="com.atguigu.bean.TbOwnerNew" resultMap="BaseResultMap">
     update tb_owner_new 
