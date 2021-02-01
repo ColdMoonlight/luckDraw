@@ -18,10 +18,6 @@ public interface TbOwnerNewMapper {
 
 	List<TbOwnerNew> selectTbOwnerNewAll();
 
-	int setAllToOne();
-
-	int setAllToZero();
-
 	List<TbOwnerNew> selectTbOwnerNewByGrade(TbOwnerNew tbOwnerNew);
 
 	int updateTwoIntoEffect(TbOwnerNew tbOwnerNew);

@@ -103,7 +103,7 @@
   </update>
   
   <!-- selectTbOwnerNewByGrade -->
-  <select id="selectTbOwnerNewByGrade" parameterType="com.atguigu.bean.TbOwnerNew">
+  <select id="selectTbOwnerNewByGrade" parameterType="com.atguigu.bean.TbOwnerNew" resultMap="BaseResultMap">
     select *
     from tb_owner_new
     where new_grade = #{newGrade,jdbcType=INTEGER} and new_status = 1
@@ -115,4 +115,5 @@
     set new_status = #{newStatus,jdbcType=INTEGER} 
     where new_grade = #{newGrade,jdbcType=INTEGER}
   </update>
+  
 </mapper>

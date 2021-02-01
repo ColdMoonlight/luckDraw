@@ -20,41 +20,16 @@ public class TbOwnerNewController {
 	@Autowired
 	TbOwnerNewService tbOwnerNewService;
 	
+	
+	/**1.0	unuse
+	 * tbOwnerNewPage
+	 */
 	@RequestMapping("/tbOwnerNewPage")
 	public String tbOwnerNewPage(HttpSession session) throws Exception{
 		
 		return "back/ownerNewPage";
 	}
-	
-	/**1.0	use
-	 * tbOwnerNewAllToOne
-	 */
-	@RequestMapping(value="/tbOwnerNewAllToOne",method=RequestMethod.POST)
-	@ResponseBody
-	public Msg tbOwnerNewAllToOne(HttpServletResponse rep,HttpServletRequest res,HttpSession session,@RequestBody TbOwnerNew TbOwnerNew){
-		
-		TbOwnerNew tbOwnerNewReq =new TbOwnerNew();
-		for(int i=1;i<=4;i++){
-			tbOwnerNewReq.setNewId(i);
-			tbOwnerNewReq.setNewGrade(1);
-		}
-		tbOwnerNewService.updateByPrimaryKeySelective(tbOwnerNewReq);
-		
-		return Msg.success().add("resMsg", "抽奖成功").add("tbOwnerLuckDrawOne", null);
-	}
-	
-	/**2.0	unuse
-	 * tbOwnerNewAllToZero
-	 */
-	@RequestMapping(value="/tbOwnerNewAllToZero",method=RequestMethod.POST)
-	@ResponseBody
-	public Msg tbOwnerNewAllToZero(HttpServletResponse rep,HttpServletRequest res,HttpSession session){
-		
-		tbOwnerNewService.setAllToZero();
-		
-		return Msg.success().add("resMsg", "重置完成");
-	}
-	
+
 	/**2.0	unuse
 	 * tbOwnerNewAllToZero
 	 */

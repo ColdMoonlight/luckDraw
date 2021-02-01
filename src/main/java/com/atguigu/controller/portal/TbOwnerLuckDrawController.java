@@ -48,7 +48,7 @@ public class TbOwnerLuckDrawController {
 		
 		//先查询new表,如果长度>0去出一个,返回展示
 		TbOwnerNew tbOwnerNewReq = new TbOwnerNew();
-		tbOwnerNewReq.setNewGrade(luckdrawGrade);
+		tbOwnerNewReq.setNewGrade(luckdrawGrade);//等级,状态默认1
 		List<TbOwnerNew> tbOwnerNewList = tbOwnerNewService.selectTbOwnerNewByGrade(tbOwnerNewReq);
 		
 		if(tbOwnerNewList.size()>0){
@@ -60,13 +60,14 @@ public class TbOwnerLuckDrawController {
 			Integer newIdhasUsed = tbOwnerNewOne.getNewId();
 			TbOwnerNew tbOwnerNewhasUsed = new TbOwnerNew();
 			tbOwnerNewhasUsed.setNewId(newIdhasUsed);
-			tbOwnerNewhasUsed.setNewGrade(0);
+			//tbOwnerNewhasUsed.setNewGrade(0);
+			tbOwnerNewhasUsed.setNewStatus(1);//改成已中奖状态,默认都是0未中奖状态
 			tbOwnerNewService.updateByPrimaryKeySelective(tbOwnerNewhasUsed);
 			
 		}else{
 			
 			TbOwnerLuckDraw TbOwnerLuckDrawReq = new TbOwnerLuckDraw();
-			TbOwnerLuckDrawReq.setLuckdrawStatus(0);
+			TbOwnerLuckDrawReq.setLuckdrawStatus(0);//拿出0未中奖状态的全部人,去工具类中随机抽奖
 			
 			//查询长度,去工具类里面,把长度值送进去,生成范围内的随机数,拿回来,取出该条对应的数据..
 			List<TbOwnerLuckDraw> TbOwnerLuckDrawResList = new ArrayList<TbOwnerLuckDraw>();
@@ -86,7 +87,7 @@ public class TbOwnerLuckDrawController {
 		//用人名更;封装参数,更新本条对应人为已中奖状态,不再参与下次抽奖
 		TbOwnerLuckDraw tbOwnerLuckDrawUpdate = new TbOwnerLuckDraw();
 		tbOwnerLuckDrawUpdate.setLuckdrawName(winPropleName);
-		tbOwnerLuckDrawUpdate.setLuckdrawStatus(1);
+		tbOwnerLuckDrawUpdate.setLuckdrawStatus(1);//把这个人改成已中奖状态
 		tbOwnerLuckDrawService.updateByPrimaryKeySelective(tbOwnerLuckDrawUpdate);
 		
 		//把这个人的信息插入抽奖结果表中
