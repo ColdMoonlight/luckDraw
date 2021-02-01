@@ -6,6 +6,8 @@ public class TbOwnerNew {
     private String newName;
 
     private Integer newGrade;
+    
+    private Integer newStatus;
 
     private String newCreatetime;
 
@@ -34,8 +36,16 @@ public class TbOwnerNew {
     public void setNewGrade(Integer newGrade) {
         this.newGrade = newGrade;
     }
+    
+    public Integer getNewStatus() {
+		return newStatus;
+	}
 
-    public String getNewCreatetime() {
+	public void setNewStatus(Integer newStatus) {
+		this.newStatus = newStatus;
+	}
+
+	public String getNewCreatetime() {
         return newCreatetime;
     }
 
@@ -50,4 +60,26 @@ public class TbOwnerNew {
     public void setNewMotifytime(String newMotifytime) {
         this.newMotifytime = newMotifytime == null ? null : newMotifytime.trim();
     }
+
+	public TbOwnerNew() {
+		super();
+	}
+
+	public TbOwnerNew(Integer newId, String newName, Integer newGrade, Integer newStatus, String newCreatetime,
+			String newMotifytime) {
+		super();
+		this.newId = newId;
+		this.newName = newName;
+		this.newGrade = newGrade;
+		this.newStatus = newStatus;
+		this.newCreatetime = newCreatetime;
+		this.newMotifytime = newMotifytime;
+	}
+
+	@Override
+	public String toString() {
+		return "TbOwnerNew [newId=" + newId + ", newName=" + newName + ", newGrade=" + newGrade + ", newStatus="
+				+ newStatus + ", newCreatetime=" + newCreatetime + ", newMotifytime=" + newMotifytime + "]";
+	}
+    
 }
