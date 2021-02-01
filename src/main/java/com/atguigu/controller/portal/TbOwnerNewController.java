@@ -20,6 +20,12 @@ public class TbOwnerNewController {
 	@Autowired
 	TbOwnerNewService tbOwnerNewService;
 	
+	@RequestMapping("/tbOwnerNewPage")
+	public String tbOwnerNewPage(HttpSession session) throws Exception{
+		
+		return "back/ownerNewPage";
+	}
+	
 	/**1.0	use
 	 * tbOwnerNewAllToOne
 	 */
@@ -48,5 +54,25 @@ public class TbOwnerNewController {
 		
 		return Msg.success().add("resMsg", "重置完成");
 	}
+	
+	/**2.0	unuse
+	 * tbOwnerNewAllToZero
+	 */
+	@RequestMapping(value="/tbOwnerNewIntoEffect",method=RequestMethod.POST)
+	@ResponseBody
+	public Msg tbOwnerNewIntoEffect(HttpServletResponse rep,HttpServletRequest res,HttpSession session,@RequestBody TbOwnerNew TbOwnerNewInto){
+		
+		Integer grade = TbOwnerNewInto.getNewGrade();
+		
+		TbOwnerNew TbOwnerNew = new TbOwnerNew();
+		TbOwnerNew.setNewGrade(grade);
+		TbOwnerNew.setNewStatus(1);
+		
+		tbOwnerNewService.updateTwoIntoEffect(TbOwnerNew);
+		
+		return Msg.success().add("resMsg", "重置完成");
+	}
+	
+	
 
 }
