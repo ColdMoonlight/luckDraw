@@ -66,4 +66,9 @@ public class TbOwnerNewService {
 		return intReslut;
 	}
 
+	public int updateTwoIntoEffect(TbOwnerNew TbOwnerNew) {
+		int  intReslut = TbOwnerNewMapper.updateTwoIntoEffect(TbOwnerNew);
+		return intReslut;
+	}
+
 }

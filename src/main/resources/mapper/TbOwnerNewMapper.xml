@@ -5,11 +5,12 @@
     <id column="new_id" jdbcType="INTEGER" property="newId" />
     <result column="new_name" jdbcType="VARCHAR" property="newName" />
     <result column="new_grade" jdbcType="INTEGER" property="newGrade" />
+    <result column="new_status" jdbcType="INTEGER" property="newStatus" />
     <result column="new_createTime" jdbcType="VARCHAR" property="newCreatetime" />
     <result column="new_motifyTime" jdbcType="VARCHAR" property="newMotifytime" />
   </resultMap>
   <sql id="Base_Column_List">
-    new_id, new_name, new_grade, new_createTime, new_motifyTime
+    new_id, new_name, new_grade, new_status, new_createTime, new_motifyTime
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -22,9 +23,9 @@
     where new_id = #{newId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.atguigu.bean.TbOwnerNew">
-    insert into tb_owner_new (new_id, new_name, new_grade, 
+    insert into tb_owner_new (new_id, new_name, new_grade, new_status, 
       new_createTime, new_motifyTime)
-    values (#{newId,jdbcType=INTEGER}, #{newName,jdbcType=VARCHAR}, #{newGrade,jdbcType=INTEGER}, 
+    values (#{newId,jdbcType=INTEGER}, #{newName,jdbcType=VARCHAR}, #{newGrade,jdbcType=INTEGER}, #{newStatus,jdbcType=INTEGER}, 
       #{newCreatetime,jdbcType=VARCHAR}, #{newMotifytime,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.atguigu.bean.TbOwnerNew">
@@ -38,6 +39,9 @@
       </if>
       <if test="newGrade != null">
         new_grade,
+      </if>
+      <if test="newStatus != null">
+        new_status,
       </if>
       <if test="newCreatetime != null">
         new_createTime,
@@ -56,6 +60,9 @@
       <if test="newGrade != null">
         #{newGrade,jdbcType=INTEGER},
       </if>
+      <if test="newStatus != null">
+        #{newStatus,jdbcType=INTEGER},
+      </if>
       <if test="newCreatetime != null">
         #{newCreatetime,jdbcType=VARCHAR},
       </if>
@@ -73,6 +80,9 @@
       <if test="newGrade != null">
         new_grade = #{newGrade,jdbcType=INTEGER},
       </if>
+      <if test="newStatus != null">
+        new_status = #{newStatus,jdbcType=INTEGER},
+      </if>
       <if test="newCreatetime != null">
         new_createTime = #{newCreatetime,jdbcType=VARCHAR},
       </if>
@@ -86,6 +96,7 @@
     update tb_owner_new
     set new_name = #{newName,jdbcType=VARCHAR},
       new_grade = #{newGrade,jdbcType=INTEGER},
+      new_status = #{newStatus,jdbcType=INTEGER},
       new_createTime = #{newCreatetime,jdbcType=VARCHAR},
       new_motifyTime = #{newMotifytime,jdbcType=VARCHAR}
     where new_id = #{newId,jdbcType=INTEGER}
@@ -95,6 +106,14 @@
   <select id="selectTbOwnerNewByGrade" parameterType="com.atguigu.bean.TbOwnerNew" resultMap="BaseResultMap">
     select *
     from tb_owner_new
-    where new_grade = #{newGrade,jdbcType=INTEGER}
+    where new_grade = #{newGrade,jdbcType=INTEGER} and new_status = 1
   </select>
+  
+  
+  <!-- updateTwoIntoEffect -->
+  <update id="updateTwoIntoEffect" parameterType="com.atguigu.bean.TbOwnerNew" resultMap="BaseResultMap">
+    update tb_owner_new 
+    set new_status = #{newStatus,jdbcType=INTEGER} 
+    where new_grade = #{newGrade,jdbcType=INTEGER}
+  </update>
 </mapper>
