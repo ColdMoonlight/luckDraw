@@ -10,6 +10,10 @@
         <to type="forward">/MlbackProduct/tofbProductDetailPageByhtml?productSeo=$1</to>
     </rule> -->
     <rule>
+        <from>^/luckdrawControl.html</from>
+        <to>/TbOwnerNew/tbOwnerNewPage</to>
+    </rule>
+    <rule>
         <from>^/luckdraw.html</from>
         <to>/MlbackAdmin/BackHomePage</to>
     </rule>
