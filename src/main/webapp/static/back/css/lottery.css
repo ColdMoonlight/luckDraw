@@ -67,11 +67,23 @@
 .lottery-right {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 230px;
     overflow: hidden;
-    width: calc(100% - 270px);
+    width: calc(100% - 500px);
     height: 100%;
     padding: 60px 0 10px 0;
+    border-radius: 5px;
+    background-color: rgba(244, 67, 54, .5);
+}
+
+.lottery-part {
+    position: absolute;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+    width: 220px;
+    height: 100%;
+    padding: 60px 10px 10px 10px;
     border-radius: 5px;
     background-color: rgba(244, 67, 54, .5);
 }
@@ -212,6 +224,56 @@
 
 .lottery-win-item-prize {
     padding: 3px 0;
+}
+
+
+.lottery-part-title {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	width: 100%;
+	padding: 15px 0;
+	font-size: 18px;
+    color: #fff;
+    text-align: center;
+    background: url(../img/line.png) no-repeat 50% 100%;
+}
+
+.lottery-part-people {
+	height: 100%;
+	padding-right: .5rem;
+	overflow-y: auto;
+}
+
+.lottery-part-item {
+	padding: 1rem;
+	border: 1px solid #cdcdcd;
+	color: #fff;
+	text-align: center;
+}
+
+.lottery-part-item+.lottery-part-item {
+	margin-top: .5rem;
+}
+
+.lottery-win-list::-webkit-scrollbar,
+.lottery-part-people::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.lottery-win-list::-webkit-scrollbar-button,
+.lottery-part-people::-webkit-scrollbar-button,
+.lottery-win-list::-webkit-scrollbar-track,
+.lottery-part-people::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.lottery-win-list::-webkit-scrollbar-thumb,
+.lottery-part-people::-webkit-scrollbar-thumb {
+    background: #c7c7c7;
+    border-radius: 4px;
 }
 
 .lottery-show-info {

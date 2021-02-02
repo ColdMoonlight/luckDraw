@@ -39,6 +39,10 @@
                 <div class="lottery-win-list lottery-win-scroll"></div>
             </div>
         </div>
+        <div class="lottery-part">
+        	<div class="lottery-part-title" title="参与抽奖人员名单">参与抽奖人员名单</div>
+        	<div class="lottery-part-people"></div>
+        </div>
     </div>
     
     <!-- 页面加载动画 -->    
@@ -116,6 +120,8 @@
 
                 personArray[i].p_x = (i % 20) + 1;
                 personArray[i].p_y = Math.floor(i / 20) + 1;
+                
+                !peopleList[i].luckdrawStatus && $('.lottery-part-people').append($('<div class="lottery-part-item">'+ peopleList[i].luckdrawName +'</div>'));
             }
         }
 
@@ -183,8 +189,7 @@
 
             initProductData();
             generateMockData();
-            getAllLuckPerson();
-            initLotteryResult()
+            getAllLuckPerson(initLotteryResult);
 
             // init  THREE
             camera = new THREE.PerspectiveCamera(40, cameraSize.width / cameraSize.height, 100, 10000);
@@ -341,7 +346,7 @@
         	var allPeople = [];
 			$.ajax({
 				url: "${APP_PATH}/TbOwnerLuckDraw/getAllPeopleName",
-				type: "get",
+				type: "post",
 				dataType: "json",
 				contentType: 'application/json',
 				async: false,
@@ -353,23 +358,45 @@
 			});
 			return allPeople;
         }
-        
+
+        // 获取所有参与人员名单
+        function getAllPartPeople(callback) {
+			$.ajax({
+				url: "${APP_PATH}/TbOwnerLuckDraw/getAllPeopleName",
+				type: "get",
+				dataType: "json",
+				contentType: 'application/json',
+				async: false,
+				success: function (data) {
+					console.log(data)
+					if (data.code == 100) {
+						callback && callback(data.extend.allPeopleList);
+					} else {
+						$('.lottery-part-people').html('<p>网络异常，请稍后重新刷新页面...</p>');
+					}
+				},
+				error: function() {
+					$('.lottery-part-people').html('<p>网络异常，请稍后重新刷新页面...</p>');
+				}
+			});
+        }
+
         // 获取所有中奖人员
-        function getAllLuckPerson() {
+        function getAllLuckPerson(callback) {
 			$.ajax({
 				url: "${APP_PATH}/TbOwnerDrawResult/getAllresult",
 				type: "post",
 				dataType: "json",
 				contentType: 'application/json',
-				async: false,
 				success: function (data) {
 					if (data.code == 100) {
 						lotteryResultData = data.extend.allWinPeopleList && data.extend.allWinPeopleList;
+						callback && callback();
 					}
 				}
 			});
         }
-        
+
         // 重置获奖名单
         function resetLotteryWinList(callback) {
         	$('.loader-container').show();
@@ -394,6 +421,14 @@
 		        	$('.loader-container').hide();
 				}
 			});
+        }
+
+        // 移除已获奖人信息
+       	function removeOnePartPeople(data) {
+        	$('.lottery-part-item').each(function(idx, item) {
+        		var $item = $(item);
+        		if ($item.text() == data) $item.remove();
+        	});
         }
 
         var camera, scene, renderer;
@@ -444,7 +479,7 @@
 	        	luckName = getLotteryPerson(prizeRank);
 	        	luckName && $('.lottery-show-info .nickname').text(luckName);
 	            $('.lottery-middle').show();
-	            $('.lottery-left, .lottery-right').hide();
+	            $('.lottery-left, .lottery-right, .lottery-part').hide();
 	            cancelAnimationFrame(stopAnimateId);
 	            startAnimate();        		
         	}
@@ -460,7 +495,7 @@
         	addLotteryResultItem(lotteryWinPersonInfo);
         	lotteryResultData.push(lotteryWinPersonInfo)
         	$('.lottery-win-num').text(lotteryResultData.length);
-        	
+
             $(this).addClass('close');
             $('.lottery-close').removeClass('close');
             cancelAnimationFrame(startAnimateId);
@@ -471,17 +506,26 @@
         $('.lottery-close').on('click', function() {
             $(this).addClass('close');
             $('.lottery-stop').removeClass('close');
-            $('.lottery-left, .lottery-right').show();
+            $('.lottery-left, .lottery-right, .lottery-part').show();
             $('.lottery-middle, .lottery-show-info').hide();
+        	
+            removeOnePartPeople(luckName);
         });
         
         $('.lottery-reset-btn').on('click', function() {
-        	$('#resetModal').modal('show');
+        	if ($('.lottery-win-item').length) {
+        		$('#resetModal').modal('show');        		
+        	} else {
+        		toastr.warning('没有中奖数据，可以重置...');
+        	}
         });
         
         $('#resetModal .btn-ok').on('click', function() {
         	resetLotteryWinList(function() {
         		$('#resetModal').modal('hide');
+        		lotteryResultData.forEach(function(item) {
+        			$('.lottery-part-people').append($('<div class="lottery-part-item">'+ (item.drawresultName || item.user) +'</div>'));
+        		});
         		lotteryResultData = [];
         		$('.lottery-win-list').html('');
         		$('.lottery-win-num').text('0');
