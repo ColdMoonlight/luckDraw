@@ -122,7 +122,7 @@ public class TbOwnerLuckDrawController {
 		
 		//查询长度,去工具类里面,把长度值送进去,生成范围内的随机数,拿回来,取出该条对应的数据..
 		List<TbOwnerLuckDraw> TbOwnerLuckDrawResList = new ArrayList<TbOwnerLuckDraw>();
-		TbOwnerLuckDrawResList = tbOwnerLuckDrawService.selectTbOwnerLuckDrawAll();
+		TbOwnerLuckDrawResList = tbOwnerLuckDrawService.selectTbOwnerLuckDrawAllByStatus(TbOwnerLuckDrawReq);
 		
 		return Msg.success().add("resMsg", "获取人名成功").add("allPeopleList", TbOwnerLuckDrawResList);
 	}

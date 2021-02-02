@@ -179,4 +179,13 @@
     where luckdraw_name = #{luckdrawName,jdbcType=VARCHAR}
   </update>
   
+  <!-- selectTbOwnerLuckDrawAllByStatus -->
+  <select id="selectTbOwnerLuckDrawAllByStatus" parameterType="com.atguigu.bean.TbOwnerLuckDraw" resultMap="BaseResultMap">
+    select 
+    luckdraw_id, luckdraw_name, luckdraw_allname, luckdraw_telephone, luckdraw_status, 
+    luckdraw_grade, luckdraw_ifin
+    from tb_owner_luckdraw
+    where luckdraw_status = #{luckdrawStatus,jdbcType=INTEGER}
+  </select>
+  
 </mapper>

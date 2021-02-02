@@ -62,5 +62,10 @@ public class TbOwnerLuckDrawService {
 		int  intReslut = TbOwnerLuckDrawMapper.updateToLuckSuccess(TbOwnerLuckDraw);
 		return intReslut;
 	}
+
+	public List<TbOwnerLuckDraw> selectTbOwnerLuckDrawAllByStatus(TbOwnerLuckDraw tbOwnerLuckDrawReq) {
+		List<TbOwnerLuckDraw>  TbOwnerLuckDrawList = TbOwnerLuckDrawMapper.selectTbOwnerLuckDrawAllByStatus(tbOwnerLuckDrawReq);
+		return TbOwnerLuckDrawList;
+	}
 	
 }
