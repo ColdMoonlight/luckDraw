@@ -163,5 +163,20 @@
     where luckdraw_id >0
   </update>
   
+  <update id="updateToLuckSuccess" parameterType="com.atguigu.bean.TbOwnerLuckDraw">
+    update tb_owner_luckdraw
+    <set>
+      <if test="luckdrawStatus != null">
+        luckdraw_status = #{luckdrawStatus,jdbcType=INTEGER},
+      </if>
+      <if test="luckdrawGrade != null">
+        luckdraw_grade = #{luckdrawGrade,jdbcType=INTEGER},
+      </if>
+      <if test="luckdrawIfin != null">
+        luckdraw_ifin = #{luckdrawIfin,jdbcType=INTEGER},
+      </if>
+    </set>
+    where luckdraw_name = #{luckdrawName,jdbcType=VARCHAR}
+  </update>
   
 </mapper>
