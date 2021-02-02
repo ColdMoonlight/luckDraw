@@ -31,7 +31,7 @@ public class TbOwnerNewController {
 	}
 
 	/**2.0	unuse
-	 * tbOwnerNewAllToZero
+	 * tbOwnerNewIntoEffect
 	 */
 	@RequestMapping(value="/tbOwnerNewIntoEffect",method=RequestMethod.POST)
 	@ResponseBody
@@ -47,7 +47,5 @@ public class TbOwnerNewController {
 		
 		return Msg.success().add("resMsg", "重置完成");
 	}
-	
-	
 
 }
