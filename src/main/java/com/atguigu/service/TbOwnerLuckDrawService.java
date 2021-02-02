@@ -16,7 +16,7 @@ public class TbOwnerLuckDrawService {
 	 * @author Shinelon
 	 * @param TbOwnerLuckDraw
 	 * @exception add方法用户信息是否存在
-	 * 	3.0
+	 * 	1.0
 	 * */
 	public int insertSelective(TbOwnerLuckDraw TbOwnerLuckDraw) {
 		int intReslut = TbOwnerLuckDrawMapper.insertSelective(TbOwnerLuckDraw);
@@ -26,7 +26,7 @@ public class TbOwnerLuckDrawService {
 	/**
 	 * @author
 	 * @exception 删除本条信息
-	 * 	3.0
+	 * 	2.0
 	 * */
 	public int deleteByPrimaryKey(int CatalogId) {
 		int  intReslut = TbOwnerLuckDrawMapper.deleteByPrimaryKey(CatalogId);
