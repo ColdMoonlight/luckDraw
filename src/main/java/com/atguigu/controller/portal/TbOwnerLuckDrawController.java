@@ -61,7 +61,7 @@ public class TbOwnerLuckDrawController {
 			TbOwnerNew tbOwnerNewhasUsed = new TbOwnerNew();
 			tbOwnerNewhasUsed.setNewId(newIdhasUsed);
 			//tbOwnerNewhasUsed.setNewGrade(0);
-			tbOwnerNewhasUsed.setNewStatus(1);//改成已中奖状态,默认都是0未中奖状态
+			tbOwnerNewhasUsed.setNewStatus(0);//改成已中奖状态,默认都是0未中奖状态
 			tbOwnerNewService.updateByPrimaryKeySelective(tbOwnerNewhasUsed);
 			
 		}else{
@@ -81,14 +81,14 @@ public class TbOwnerLuckDrawController {
 			tbOwnerLuckDrawOne = TbOwnerLuckDrawResList.get(luckNumber);
 			winPropleName = tbOwnerLuckDrawOne.getLuckdrawName();
 			
-			System.out.println("中奖人是:"+winPropleName);
+			System.out.println("中奖人是:"+winPropleName); 
 			
 		}
 		//用人名更;封装参数,更新本条对应人为已中奖状态,不再参与下次抽奖
 		TbOwnerLuckDraw tbOwnerLuckDrawUpdate = new TbOwnerLuckDraw();
 		tbOwnerLuckDrawUpdate.setLuckdrawName(winPropleName);
 		tbOwnerLuckDrawUpdate.setLuckdrawStatus(1);//把这个人改成已中奖状态
-		tbOwnerLuckDrawService.updateByPrimaryKeySelective(tbOwnerLuckDrawUpdate);
+		tbOwnerLuckDrawService.updateToLuckSuccess(tbOwnerLuckDrawUpdate);
 		
 		//把这个人的信息插入抽奖结果表中
 		String nowTime = DateUtil.strTime14s();
@@ -113,7 +113,7 @@ public class TbOwnerLuckDrawController {
 		return finalnumber;
 	}
 	
-	@RequestMapping(value="/getAllPeopleName",method=RequestMethod.GET)
+	@RequestMapping(value="/getAllPeopleName",method=RequestMethod.POST)
 	@ResponseBody
 	public Msg getAllPeopleName(HttpServletResponse rep,HttpServletRequest res,HttpSession session){
 		

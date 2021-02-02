@@ -22,4 +22,6 @@ public interface TbOwnerLuckDrawMapper {
 	List<TbOwnerLuckDraw> selectTbOwnerLuckDrawAll();
 
 	int updateAllToStatuszero();
+	
+    int updateToLuckSuccess(TbOwnerLuckDraw record);
 }

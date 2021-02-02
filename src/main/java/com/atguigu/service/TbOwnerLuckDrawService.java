@@ -58,4 +58,9 @@ public class TbOwnerLuckDrawService {
 		return intReslut;
 	}
 	
+	public int updateToLuckSuccess(TbOwnerLuckDraw TbOwnerLuckDraw) {
+		int  intReslut = TbOwnerLuckDrawMapper.updateToLuckSuccess(TbOwnerLuckDraw);
+		return intReslut;
+	}
+	
 }
