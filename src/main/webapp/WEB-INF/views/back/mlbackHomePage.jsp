@@ -436,9 +436,9 @@
         var startAnimateId, stopAnimateId;
         
         var lotteryPrizeData = [
-            { key: "一等奖", value: "小米电视"},
-            { key: "二等奖", value: "手机"},
-            { key: "三等奖", value: "充电宝"},
+            { key: "一等奖", value: "小米55寸智能电视"},
+            { key: "二等奖", value: "九阳破壁机"},
+            { key: "三等奖", value: "苏泊尔高压电饭煲"},
         ];
         var lotteryResultData = [];
         // animate
