@@ -54,7 +54,7 @@
 
     <!-- 音乐 -->
     <div style="display: none;">
-        <audio controls="controls" id="bgmusic" loop="true">
+        <audio controls="controls" id="bgmusic" loop="true" autoplay >
             <source src="${APP_PATH}/static/back/mp3.mp3" type="audio/mpeg"> 您的浏览器不支持音乐播放 </source>
         </audio>
     </div>
@@ -190,7 +190,8 @@
             initProductData();
             generateMockData();
             getAllLuckPerson(initLotteryResult);
-
+            // music play
+            $('#bgmusic')[0].play();
             // init  THREE
             camera = new THREE.PerspectiveCamera(40, cameraSize.width / cameraSize.height, 100, 10000);
             camera.position.z = 3000;
