@@ -1,6 +1,7 @@
 package com.atguigu.bean;
 
 public class TbOwnerLuckDraw {
+	
     private Integer luckdrawId;
 
     private String luckdrawName;
